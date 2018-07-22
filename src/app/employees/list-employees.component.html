@@ -1,0 +1,33 @@
+<div class='container'>
+  <div class='row' style="margin-top: 1vmax">    
+    <div class='col-md-3 form-group'>
+      <label class="control-label">Symbol Search</label>
+      <input class="form-control" type='text' [(ngModel)]='filterBy' />
+    </div>
+    <div class='col-md-2'>
+      <input type='button' value="Search" class="btn btn-primary" style="margin-top: 2em;" (click)="SearchStock()" />
+    </div>
+  </div>
+
+  <div class='table-responsive'>
+    <table class='table table-bordered' *ngIf='employees && employees.length'>
+      <thead style="border-bottom: 0">
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Address</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor='let emp of employees'>
+          <td>{{ emp.ID }}</td>
+          <td>{{ emp.Name }}</td>
+          <td>{{ emp.Address }}</td>
+          <td>{{ emp.Email }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>

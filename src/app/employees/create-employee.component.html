@@ -1,0 +1,88 @@
+<form #eForm="ngForm" (ngSubmit)="saveEmployee(eForm)" class="container">
+  <div class="panel panel-primary">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">Create Emploee</h3>
+    </div>
+
+    <div class="panel-body col-md-6">
+
+      <div class="form-group" [class.was-validated]="empIdControl.invalid && empIdControl.touched">
+        <label for="empId" class="form-control-label">Employee Id</label>
+        <input type="text" name="empId" placeholder="Enter Id" required class="form-control" id="empId" [(ngModel)]="employee.ID"
+          #empIdControl="ngModel">
+        <div class="invalid-feedback" *ngIf="empIdControl.invalid && empIdControl.touched">Employee Id is mandatory.</div>
+      </div>
+
+      <div class="form-group" [class.was-validated]="fullNameControl.invalid && fullNameControl.touched">
+        <label for="fullName" class="form-control-label">Full name</label>
+        <input type="text" name="fullName" placeholder="Enter Name" required class="form-control" id="fullName" [(ngModel)]="employee.Name"
+          #fullNameControl="ngModel">
+        <div class="invalid-feedback" *ngIf="fullNameControl.invalid && fullNameControl.touched">Full name is mandatory.</div>
+      </div>
+
+      <div class="form-group" [class.was-validated]="emailControl.invalid && emailControl.touched">
+        <label for="email" class="form-control-label">Email</label>
+        <input type="text" name="email" placeholder="Enter Email" required class="form-control" id="email" [(ngModel)]="employee.Email"
+          #emailControl="ngModel">
+        <div class="invalid-feedback" *ngIf="emailControl.invalid && emailControl.touched">Email is mandatory.</div>
+      </div>
+
+      <div class="form-group" [class.was-validated]="addressControl.invalid && addressControl.touched">
+        <label for="address" class="form-control-label">Address</label>
+        <input required type="text" placeholder="Enter Address" name="address" class="form-control" id="address" [(ngModel)]="employee.Address"
+          #addressControl="ngModel">
+        <div class="invalid-feedback" *ngIf="addressControl.invalid && addressControl.touched">Address is mandatory.</div>
+      </div>
+
+      <div class="form-group" [class.was-validated]="department.invalid && department.touched">
+        <label for="department" class="form-control-label">Department</label>
+        <select id="department" required name="department" [(ngModel)]="employee.department" #department="ngModel"
+          class="form-control">
+          <option>Select Department</option>
+          <option [value]="1">HR</option>
+          <option [value]="2">IT</option>
+          <option [value]="3">Finance</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="department.invalid && department.touched">Department is mandatory.</div>
+      </div>
+      <div class="form-group">
+        <label>Contact Preference</label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input type="radio" name="contactPreference" value="email" [(ngModel)]="contactPreference"> Email
+          </label>
+          <label class="radio-inline">
+            <input type="radio" name="contactPreference" value="phone" [(ngModel)]="contactPreference"> Phone
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="form-control">
+          <label class="radio-inline">
+            <input type="radio" value="male" name="gender" [(ngModel)]="gender"> Male
+          </label>
+          <label class="radio-inline">
+            <input type="radio" value="female" name="gender" [(ngModel)]="gender"> Female
+          </label>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="form-control">
+          <label class="checkbox-inline">
+            <input type="checkbox" name="isActive" [(ngModel)]="isActive"> Is active
+          </label>
+        </div>
+      </div>
+
+    </div>
+    <div class="panel-footer">
+      <button [disabled]="eForm.invalid" type="submit" class="btn btn-primary">Save</button>
+    </div>
+  </div>
+</form>
+
+Angular Generated Form Model :{{eForm.invalid}} {{eForm.valid}} {{ eForm.value | json}}
